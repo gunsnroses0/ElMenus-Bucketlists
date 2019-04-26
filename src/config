@@ -1,4 +1,4 @@
-POST,/bucketlist,CreateBucketlist
+POST,/bucketlist/,CreateBucketlist
 GET,/bucketlist/id,GetBucketlist
 POST,/bucketlist/addCommand/,AddCommand
 POST,/bucketlist/updateCommand/,UpdateCommand
