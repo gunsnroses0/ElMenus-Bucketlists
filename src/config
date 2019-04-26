@@ -1,0 +1,10 @@
+POST,/bucketlist,CreateBucketlist
+GET,/bucketlist/id,GetBucketlist
+POST,/bucketlist/addCommand/,AddCommand
+POST,/bucketlist/updateCommand/,UpdateCommand
+POST,/bucketlist/deleteCommand/,DeleteCommand
+POST,/bucketlist/updateThreadPoolCount/,UpdateThreadPoolCount
+POST,/bucketlist/updateDBPoolCount/,UpdateDBPoolCount
+GET,/bucketlist/freeze/,FreezeQueue
+GET,/bucketlist/resume/,ResumeQueue
+POST,/bucketlist,Test
