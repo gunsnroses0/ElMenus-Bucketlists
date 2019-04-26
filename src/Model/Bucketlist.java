@@ -38,7 +38,7 @@ public class Bucketlist {
 		DbPoolCount = dbPoolCount;
 	}
 
-	public static HashMap<String, Object> create(HashMap<String, Object> atrributes) {
+	public static HashMap<String, Object> create(HashMap<String, Object> atrributes) throws ParseException {
 
 		MongoClientURI uri = new MongoClientURI(
 				"mongodb://admin:admin@cluster0-shard-00-00-nvkqp.gcp.mongodb.net:27017,cluster0-shard-00-01-nvkqp.gcp.mongodb.net:27017,cluster0-shard-00-02-nvkqp.gcp.mongodb.net:27017/El-Menus?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true");
@@ -57,7 +57,9 @@ public class Bucketlist {
 		}
 		collection.insertOne(newBucketlist);
 
-		return atrributes;
+		JSONParser parser = new JSONParser();
+		HashMap<String, Object> returnValue = Command.jsonToMap((JSONObject) parser.parse(newBucketlist.toJson()));
+		return returnValue;
 	}
 
 	public static HashMap<String, Object> get(String messageId) {
