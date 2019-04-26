@@ -31,6 +31,8 @@ public class Bucketlist {
 
 	private static MongoCollection<Document> collection = null;
 	private static int DbPoolCount = 4;
+	static String host = System.getenv("MONGO_URI");
+
 	public static int getDbPoolCount() {
 		return DbPoolCount;
 	}
@@ -65,7 +67,7 @@ public class Bucketlist {
 	public static HashMap<String, Object> get(String messageId) {
 
 		MongoClientURI uri = new MongoClientURI(
-				"mongodb://localhost");
+				host);
 
 		MongoClient mongoClient = new MongoClient(uri);
 		MongoDatabase database = mongoClient.getDatabase("El-Menus");
