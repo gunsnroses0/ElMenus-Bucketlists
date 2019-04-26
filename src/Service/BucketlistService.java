@@ -33,7 +33,6 @@ import Commands.GetBucketlist;
 public class BucketlistService {
 	private static String RPC_QUEUE_NAME = "bucketlist-request";
 	private static int threadPoolCount=4;
-	static String host = System.getenv("MONGO_URI");
 	public static HashMap<String, String> config;
 	public static String getRPC_QUEUE_NAME() {
 		return RPC_QUEUE_NAME;
