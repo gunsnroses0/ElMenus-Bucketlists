@@ -34,6 +34,20 @@ public class Bucketlist {
 	private static int DbPoolCount = 4;
 	static String host = System.getenv("MONGO_URI");
 
+	
+	static MongoClientOptions.Builder options = null;
+	static MongoClientURI uri = null;
+	static MongoClient mongoClient = null; 
+	
+	public static void initializeDb() {
+		options = MongoClientOptions.builder()
+				.connectionsPerHost(DbPoolCount);
+		uri = new MongoClientURI(
+				host,options);
+		mongoClient = new MongoClient(uri);
+			
+	}
+	
 	public static int getDbPoolCount() {
 		return DbPoolCount;
 	}
@@ -43,10 +57,7 @@ public class Bucketlist {
 
 	public static HashMap<String, Object> create(HashMap<String, Object> atrributes) throws ParseException {
 
-		MongoClientURI uri = new MongoClientURI(
-				"mongodb://admin:admin@cluster0-shard-00-00-nvkqp.gcp.mongodb.net:27017,cluster0-shard-00-01-nvkqp.gcp.mongodb.net:27017,cluster0-shard-00-02-nvkqp.gcp.mongodb.net:27017/El-Menus?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true");
-
-		MongoClient mongoClient = new MongoClient(uri);
+		
 		MongoDatabase database = mongoClient.getDatabase("El-Menus");
 //    	Method method =   Class.forName("PlatesService").getMethod("getDB", null);
 //    	MongoDatabase database = (MongoDatabase) method.invoke(null, null);
@@ -67,10 +78,6 @@ public class Bucketlist {
 
 	public static HashMap<String, Object> get(String messageId) {
 
-		MongoClientURI uri = new MongoClientURI(
-				host);
-
-		MongoClient mongoClient = new MongoClient(uri);
 		MongoDatabase database = mongoClient.getDatabase("El-Menus");
 //    	Method method =   Class.forName("PlatesService").getMethod("getDB", null);
 //    	MongoDatabase database = (MongoDatabase) method.invoke(null, null);

@@ -29,6 +29,7 @@ import com.rabbitmq.client.Envelope;
 import Commands.Command;
 import Commands.CreateBucketlist;
 import Commands.GetBucketlist;
+import Model.Bucketlist;
 
 public class BucketlistService {
 	private static String RPC_QUEUE_NAME = "bucketlist-request";
@@ -46,6 +47,7 @@ public class BucketlistService {
 	public static void main(String[] argv) {
 		run();
 		ServiceController.run();
+		Bucketlist.initializeDb();
 	}
 
 	public static void run() {
