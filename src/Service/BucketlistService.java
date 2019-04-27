@@ -56,13 +56,13 @@ public class BucketlistService {
 			e1.printStackTrace();
 		}
 
-		MongoClientURI uri = new MongoClientURI(
-				host);
+// 		MongoClientURI uri = new MongoClientURI(
+// 				host);
 
-		MongoClient mongoClient = new MongoClient(uri);
-		database = mongoClient.getDatabase("El-Menus");
+// 		MongoClient mongoClient = new MongoClient(uri);
+// 		database = mongoClient.getDatabase("El-Menus");
 		// initialize thread pool of fixed size
-		final ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(4);
+		final ThreadPoolExecutor executor = (ThreadPoolExecutor) Executors.newFixedThreadPool(threadPoolCount);
 
 		ConnectionFactory factory = new ConnectionFactory();
 		String host = System.getenv("RABBIT_MQ_SERVICE_HOST");
